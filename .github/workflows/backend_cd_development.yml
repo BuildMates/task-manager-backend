@@ -16,7 +16,7 @@ permissions:
   id-token: write
 
 jobs:
-  deploy-staging:
+  deploy-development:
     name: Deploy backend to development
     runs-on: ubuntu-latest
     environment: development
