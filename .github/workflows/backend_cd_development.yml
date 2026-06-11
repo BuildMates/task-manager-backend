@@ -72,20 +72,20 @@ jobs:
           ssh -i ~/.ssh/ec2_key "$EC2_USER@$EC2_HOST" << EOF
             set -e
 
-            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
+            aws ecr get-login-password --region $AWS_REGION | sudo docker login --username AWS --password-stdin $ECR_REGISTRY
 
-            docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+            sudo docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-            docker stop task-manager-backend || true
-            docker rm task-manager-backend || true
+            sudo docker stop task-manager-backend || true
+            sudo docker rm task-manager-backend || true
 
-            docker run -d \
+            sudo docker run -d \
               --name task-manager-backend \
               --restart unless-stopped \
               -p 8000:8000 \
               $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-            docker image prune -f
+            sudo docker image prune -f
           EOF
 
       - name: Verify health check
