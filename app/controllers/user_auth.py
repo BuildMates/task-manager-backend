@@ -12,12 +12,12 @@ router = APIRouter(
 
 @router.post("/signup")
 def signup(command: SignupCommand):
-    return auth_service.signup(command);
+    return auth_service.signup(command)
 
 
 @router.post("/login")
 def login(command: LoginCommand):
-    return auth_service.login(command);
+    return auth_service.login(command)
 
 
 @router.get("/user")

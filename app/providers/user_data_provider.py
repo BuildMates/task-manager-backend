@@ -10,12 +10,12 @@ class UserDataProvider:
             user = users_db.get(email)
 
             if not user:
-                return None;
+                return None
 
             return UserReadModel(email=user.email)
 
         def get_all_user_profiles(self) -> List[UserReadModel]:
              return [UserReadModel(email=user.email)
-                for user in users_db.values()];
+                for user in users_db.values()]
 
 user_data_provider = UserDataProvider()

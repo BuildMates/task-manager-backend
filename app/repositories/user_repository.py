@@ -11,7 +11,7 @@ class UserRepository:
 
 
     def get_user_for_login(self, email: str) -> Optional[UserWriteModel]:
-        return users_db.get(email);
+        return users_db.get(email)
 
 
 user_repository = UserRepository()
